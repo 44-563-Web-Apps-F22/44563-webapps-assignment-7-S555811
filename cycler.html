@@ -1,7 +1,9 @@
 
+
 <!DOCTYPE html>
 <html> <head>
     <title>cycler</title>
+    
     <style>
     .flex-container {
       display: flex;  flex-direction:row;
@@ -20,13 +22,6 @@
 		 background-color: green;
 	  }
 	}
-    
-    h1 {
-               color: #dfe221;
-               font-family: Audiowide;
-               padding: 5px;
-               margin-bottom: 10px;
-            }
 </style></head>
 
 
@@ -36,15 +31,21 @@
 	<h1>Vengalarao Yeluri builds a cycler</h1>
 
 	<input type="text" id="input"><br>
+    <br>
 	<button onclick="makeNewDiv()">Add value</button>
-
+    <br>
+    <br>
 		<div class="flex-container" id="target">
 		  <div class="cycler baseBlock">row item 1</div>   
 		  <div class="cycler baseBlock">row item 2</div>  
 		  <div class="cycler baseBlock">row item 3</div>  
 		</div>
+        <br>
+        <br>
 	
-	
+	<button onclick="get()" class="btn btn-primary">Get</button>
+
+	<button onclick="spin()" class="btn btn-secondary">Spin</button><br>
 		
 	
 	
@@ -53,7 +54,8 @@
 	function makeNewDiv(){
 		/* make the div and its text */
 		let element = document.createElement("div")
-		element.innerHTML = "an item after 3"
+		element.innerHTML = document.getElementById("input").value
+		element.className="cycler baseBlock"
 		element.style.color = "orange"
 
 		/* add it to the container */
@@ -61,19 +63,28 @@
 		container.appendChild(element)
 		
 	}
+	function get()
+	{
+		let cyclerItems= document.getElementsByClassName("cycler baseBlock")
+		let size=cyclerItems.length
+		if(size>0)
+		{
+			cyclerItems[size-1].remove()
+		}
+	}
+	function spin()
+	{
+		let cyclerItems = document.getElementsByClassName("cycler baseBlock")
+		let size = cyclerItems.length
+
+		if (size > 1) {
+			let removedItem = cyclerItems[size-1]
+			cyclerItems[size-1].remove()
+			let container = document.getElementById('target')
+			container.insertBefore(removedItem, container.firstChild)
+		}
+	}
+	
+	
 </script>
 </html>	
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
