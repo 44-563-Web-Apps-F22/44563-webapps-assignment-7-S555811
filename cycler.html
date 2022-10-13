@@ -46,8 +46,9 @@
 	<button onclick="get()" class="btn btn-primary">Get</button>
 
 	<button onclick="spin()" class="btn btn-secondary">Spin</button><br>
-		
-	
+		<br>
+
+	<button class="btn btn-primary" type="submit" onclick="swap()">Swap</button>
 	
 </body>
 <script>
@@ -85,6 +86,27 @@
 		}
 	}
 	
+
+    function swap() {
+            let cyclerItems = document.getElementsByClassName("cycler")
+            let container = document.getElementById("target")
+            let a = Math.floor(Math.random() * cyclerItems.length)
+            let b = Math.floor(Math.random() * cyclerItems.length)
+            let firstInnerText = document.getElementsByClassName("cycler")[a]
+            let secondInnerText = document.getElementsByClassName("cycler")[b]
+            if(cyclerItems.length > 1) {
+                let temp = firstInnerText.innerHTML
+                firstInnerText.innerHTML = secondInnerText.innerHTML
+                secondInnerText.innerHTML = temp
+            }
+        }
 	
 </script>
+<div class="container">
+    <ul class="pager">
+        <li class="previous">
+            <a href="reaction.html">Reaction </a>
+        </li>
+    </ul>
+</div>
 </html>	
